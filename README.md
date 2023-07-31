@@ -27,9 +27,9 @@ No, there's a chance you'll get automatically banned for doing so.
 We also do not allow scraping/crawling on SteamDB. Please get the information from Steam itself, take a look at "How are we getting this information?" question above for more information.
 ```
 
-2- Sabendo desta limitação , pesquisei sobre a API da steam. A steam possui uma API 'aberta', podendo ser feita 100.000 requesições/dia. O Número de requisições por minuto está na casa de 50 requisições em pacotes de 500 jogos(tecnica explicada adiante), com números superiores, a API bloqueou o uso.
+2- Sabendo desta limitação , pesquisei sobre a API da steam. A steam possui uma API 'aberta', podendo ser feita 100.000 requisições/dia. O Número de requisições por minuto está na casa de 50 requisições em pacotes de 500 jogos(técnica explicada adiante), com números superiores, a API bloqueou o uso.
 
-3- O Script é simples: Primeiro pegamos a lista de todos os jogos presentes na steam no endpoint: 'http://api.steampowered.com/ISteamApps/GetAppList/v0001/'. Este endpoint nos da os nomes de todos os jogos e seus respectivos ids(appid)
+3- O Script é simples: Primeiro pegamos a lista de todos os jogos presentes na steam no endpoint: 'http://api.steampowered.com/ISteamApps/GetAppList/v0001/'. Este endpoint nos dá os nomes de todos os jogos e seus respectivos ids(appid)
 
 3.1 - Depois agregei os ids em batches de 500 jogos e fiz a chamada para o endpoint: http://store.steampowered.com/api/appdetails?appids={app_ids}&cc={country_code}&filters=price_overview'
 
