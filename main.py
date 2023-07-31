@@ -9,6 +9,8 @@ import threading
 
 STEAM_ID_ENDPOINT = 'http://api.steampowered.com/ISteamApps/GetAppList/v0001/'
 
+
+
 def get_all_app_ids_as_list(return_in_batches=True, batch_size=500):
     app_id_list = requests.get(STEAM_ID_ENDPOINT).json().get("applist").get("apps").get("app")
     if return_in_batches:
@@ -34,7 +36,7 @@ def format_and_extract_data(steam_data, lookup_name):
             # no info entry
             continue
 
-        total_data.append( {
+        total_data.append({
             'name': lookup_name.get(k),
             'id': k,
             'is_free': v.get("data").get("is_free"),
@@ -68,6 +70,12 @@ def run_batch(cn, chunk):
     with open(f"extract_data_{cn}.json", "w") as f:
         f.write(json.dumps(total_data))
 
-                                                                                                                                                                                                                  
 
+for cn, chunk in enumerate(game_list):
 
+    if cn > 0 and cn % 50 == 0:
+        time.sleep(120)
+    
+    tr = threading.Thread(target=run_batch, args=(cn, chunk))    
+    tr.start()
+    
