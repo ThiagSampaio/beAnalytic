@@ -18,6 +18,7 @@ Lembrar de pôr no repositório os arquivos da automação;
 Abaixo os passos feitos para solução do problema.
 
 1- Primeiro passo foi analisar a possibilidade de extração de dados diretamente do link passado. Este passo é importante, pois ocorrem regras de proteção relacionado ao webScrapping.
+
 1.1 -  Se formos no faq(https://steamdb.info/faq/) do site, encontramos a <b>proibição de scrape</b> do site:
 ```
 Can I use auto-refreshing plugins or automatically scrape/crawl SteamDB?
