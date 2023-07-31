@@ -30,7 +30,9 @@ We also do not allow scraping/crawling on SteamDB. Please get the information fr
 2- Sabendo desta limitação , pesquisei sobre a API da steam. A steam possui uma API 'aberta', podendo ser feita 100.000 requesições/dia. O Número de requisições por minuto está na casa de 50 requisições em pacotes de 500 jogos(tecnica explicada adiante), com números superiores, a API bloqueou o uso.
 
 3- O Script é simples: Primeiro pegamos a lista de todos os jogos presentes na steam no endpoint: 'http://api.steampowered.com/ISteamApps/GetAppList/v0001/'. Este endpoint nos da os nomes de todos os jogos e seus respectivos ids(appid)
+
 3.1 - Depois agregei os ids em batches de 500 jogos e fiz a chamada para o endpoint: http://store.steampowered.com/api/appdetails?appids={app_ids}&cc={country_code}&filters=price_overview'
+
 3.2 - Temos mais de 120.000 jogos listados, seria invíavel a chamada da api para cada ID, por isso a escolha por batches. Além disso , fiz também de modo assíncrono, com a utilização de threads paralelas, acelerando ainda mais o processo.
 
 4.1- Ao final o script gera json local, no qual o usuário pode escolher a melhor forma de fazer o update para o BQ
